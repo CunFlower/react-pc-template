@@ -7,7 +7,7 @@ export function isUrl(path) {
 
 const menuData = [
   {
-    name: 'Pages',
+    name: 'pages',
     icon: 'dashboard',
     path: 'dashboard',
     children: [

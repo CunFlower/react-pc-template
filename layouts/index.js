@@ -1,9 +1,11 @@
 import { Component } from 'react';
 import { Layout, Icon, message } from 'antd';
+import router from "umi/router";
 import SiderMenu from "../components/SiderMenu/SiderMenu";
 import { getMenuData } from '../common/menu';
 import logo from '../assets/logo.png';
 import GlobalHeader from "../components/GlobalHeader";
+import Login from "../pages/login/login";
 
 const { Content, Header, Footer } = Layout;
 
@@ -15,6 +17,15 @@ class BasicLayout extends Component {
     };
   }
 
+  componentWillReceiveProps (){
+    //根据token和hash值对登陆状态进行拦截
+    const token=sessionStorage.token;
+    const {hash}=location;
+    if(!token&&hash!='#/login'){
+      router.push('/login')
+    }
+  }
+
   handleMenuCollapse = () => {
     this.setState({
       collapsed: !this.state.collapsed,
@@ -24,6 +35,9 @@ class BasicLayout extends Component {
   render() {
     const { children, location } = this.props;
     const { collapsed } = this.state;
+    if (location.pathname === '/login') {
+      return <Login></Login>
+    }
     return (
       <Layout>
         <SiderMenu

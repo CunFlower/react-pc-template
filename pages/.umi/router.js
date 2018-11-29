@@ -4,7 +4,7 @@ import dynamic from 'umi/dynamic';
 import renderRoutes from 'umi/_renderRoutes';
 
 
-let Router = DefaultRouter;
+let Router = require('dva/router').routerRedux.ConnectedRouter;
 
 let routes = [
   {
@@ -30,6 +30,11 @@ let routes = [
         "path": "/",
         "exact": true,
         "component": require('../index.js').default
+      },
+      {
+        "path": "/login/login",
+        "exact": true,
+        "component": require('../login/login.js').default
       },
       {
         "component": () => React.createElement(require('E:/my-react/react-pc-template/node_modules/_umi-build-dev@1.2.6@umi-build-dev/lib/plugins/404/NotFound.js').default, { pagesPath: 'pages', hasRoutesInConfig: false })
