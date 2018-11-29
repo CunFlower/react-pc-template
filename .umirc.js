@@ -4,6 +4,7 @@ export default {
     ['umi-plugin-react', {
       antd: true,
       dva: true,
+      title: 'react-pc-template',
       routes: {
         exclude: [
           /model\.(j|t)sx?$/,
